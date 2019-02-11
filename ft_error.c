@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:54:00 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/05 14:16:22 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/02/09 15:58:30 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_map_error(int x)
 {
 	if (x == 0)
-		ft_putstr("MAP ERROR: not a 10x10 map\n");
+		ft_putstr("MAP ERROR: not a 30x30 map\n");
 	if (x == 1)
 		ft_putstr("Wrong line\n");
 	if (x == 2)
@@ -32,6 +32,6 @@ void	ft_read_error(int x)
 	if (x == 2)
 		ft_putstr("Open error\n");
 	if (x == 3)
-		ft_putstr("Read error\n");
+		ft_putstr("Thread error\n");
 	exit(0);
 }

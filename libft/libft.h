@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 18:57:18 by ochaar            #+#    #+#             */
-/*   Updated: 2019/01/29 16:28:36 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/02/08 14:08:37 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void				ft_swap(int *a, int *b);
 int					ft_sqrt(int n);
-void				ft_print_tab(int **tab);
+void				ft_print_tab(int **tab, int size);
 int					get_next_line(const int fd, char **line);
 
 #endif

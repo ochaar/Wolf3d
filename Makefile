@@ -6,14 +6,14 @@
 #    By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:13:09 by prastoin          #+#    #+#              #
-#    Updated: 2019/02/05 17:43:09 by ochaar           ###   ########.fr        #
+#    Updated: 2019/02/11 13:54:52 by ochaar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
 SRC = main.c ft_verif.c ft_error.c ft_free.c ft_draw.c ft_ray.c \
-ft_detect.c ft_thread.c
+ft_detect.c ft_thread.c ft_load_wall.c
 
 OBJ = $(SRC:.c=.o)
 

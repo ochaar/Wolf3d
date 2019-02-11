@@ -6,167 +6,35 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:08:15 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/05 16:15:03 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/02/09 15:42:35 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void	*thread1(void *param)
+void	*thread(t_worker_arg *arg)
 {
-	t_data		*wolf;
-	t_obstacle	ob;
-	double		alpha;
-	int			x;
+	const t_data	*wolf = arg->wolf;
+	t_obstacle		ob;
+	double			alpha;
+	int				x;
+	int				i;
 
-	x = 0;
-	wolf = (t_data *)param;
-	while (x < 100)
+	i = 0;
+	x = arg->start * 50;
+	while (x < (arg->start + 1) * 50)
 	{
 		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
 			((wolf->player.fov / SCREEN_X) * x);
-		wall_detection(&ob, *wolf, alpha);
+		ft_wall_detect(&ob, *wolf, alpha);
 		draw(x, wolf, ob);
-		x++;
-	}
-	return (NULL);
-}
-
-void	*thread2(void *param)
-{
-	t_data		*wolf;
-	t_obstacle	ob;
-	double		alpha;
-	int			x;
-
-	x = 100;
-	wolf = (t_data *)param;
-	while (x < 200)
-	{
-		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
-			((wolf->player.fov / SCREEN_X) * x);
-		wall_detection(&ob, *wolf, alpha);
-		draw(x, wolf, ob);
-		x++;
-	}
-	return (NULL);
-}
-
-void	*thread3(void *param)
-{
-	t_data		*wolf;
-	t_obstacle	ob;
-	double		alpha;
-	int			x;
-
-	x = 200;
-	wolf = (t_data *)param;
-	while (x < 300)
-	{
-		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
-			((wolf->player.fov / SCREEN_X) * x);
-		wall_detection(&ob, *wolf, alpha);
-		draw(x, wolf, ob);
-		x++;
-	}
-	return (NULL);
-}
-
-void	*thread4(void *param)
-{
-	t_data		*wolf;
-	t_obstacle	ob;
-	double		alpha;
-	int			x;
-
-	x = 300;
-	wolf = (t_data *)param;
-	while (x < 400)
-	{
-		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
-			((wolf->player.fov / SCREEN_X) * x);
-		wall_detection(&ob, *wolf, alpha);
-		draw(x, wolf, ob);
-		x++;
-	}
-	return (NULL);
-}
-
-void	*thread5(void *param)
-{
-	t_data		*wolf;
-	t_obstacle	ob;
-	double		alpha;
-	int			x;
-
-	x = 400;
-	wolf = (t_data *)param;
-	while (x < 500)
-	{
-		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
-			((wolf->player.fov / SCREEN_X) * x);
-		wall_detection(&ob, *wolf, alpha);
-		draw(x, wolf, ob);
-		x++;
-	}
-	return (NULL);
-}
-
-void	*thread6(void *param)
-{
-	t_data		*wolf;
-	t_obstacle	ob;
-	double		alpha;
-	int			x;
-
-	x = 500;
-	wolf = (t_data *)param;
-	while (x < 600)
-	{
-		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
-			((wolf->player.fov / SCREEN_X) * x);
-		wall_detection(&ob, *wolf, alpha);
-		draw(x, wolf, ob);
-		x++;
-	}
-	return (NULL);
-}
-
-void	*thread7(void *param)
-{
-	t_data		*wolf;
-	t_obstacle	ob;
-	double		alpha;
-	int			x;
-
-	x = 600;
-	wolf = (t_data *)param;
-	while (x < 700)
-	{
-		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
-			((wolf->player.fov / SCREEN_X) * x);
-		wall_detection(&ob, *wolf, alpha);
-		draw(x, wolf, ob);
-		x++;
-	}
-	return (NULL);
-}
-
-void	*thread8(void *param)
-{
-	t_data		*wolf;
-	t_obstacle	ob;
-	double		alpha;
-	int			x;
-
-	x = 700;
-	wolf = (t_data *)param;
-	while (x < 800)
-	{
-		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
-			((wolf->player.fov / SCREEN_X) * x);
-		wall_detection(&ob, *wolf, alpha);
-		draw(x, wolf, ob);
+		while (i++ < 7)
+		{
+			ft_put_pixel(SCREEN_X / 2 + i, SCREEN_Y / 2, 0xFF0000, wolf);
+			ft_put_pixel(SCREEN_X / 2, SCREEN_Y / 2 + i, 0xFF0000, wolf);
+			ft_put_pixel(SCREEN_X / 2 - i, SCREEN_Y / 2, 0xFF0000, wolf);
+			ft_put_pixel(SCREEN_X / 2, SCREEN_Y / 2 - i, 0xFF0000, wolf);
+		}
 		x++;
 	}
 	return (NULL);

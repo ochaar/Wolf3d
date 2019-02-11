@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_tab.c                                     :+:      :+:    :+:   */
+/*   ft_load_wall.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/29 16:20:45 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/08 14:08:18 by ochaar           ###   ########.fr       */
+/*   Created: 2019/02/11 13:50:46 by ochaar            #+#    #+#             */
+/*   Updated: 2019/02/11 13:54:25 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "wolf.h"
 
-void	ft_print_tab(int **tab, int size)
+void	ft_load_wall(t_data	*wolf)
 {
+	int a;
+	int b;
 	int i;
-	int j;
 
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			ft_putnbr(tab[i][j]);
-			j++;
-		}
-		write(1, "\n", 1);
-		i++;
-	}
+	wolf->img_w = mlx_xpm_file_to_image(wolf->mlx, "./bois.XPM", &a, &b);
+	wolf->str_w = mlx_get_data_addr(wolf->img_w, &i, &wolf->size_w, &i);
 }

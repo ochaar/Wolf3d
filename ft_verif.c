@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:42:32 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/06 15:32:08 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/02/08 15:03:55 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,16 @@ int		**ft_verif(char *file)
 	return (data.tab);
 }
 
-void	ft_init(t_data *wolf, t_obstacle *ob)
+void	ft_init(t_data *wolf)
 {
-	ob->h = 1;
 	wolf->player.dirx = 0;
 	wolf->player.diry = 0;
+	/*wolf->player.start_x = 2;
+	wolf->player.start_y = 2;*/
 	wolf->player.fov = 60;
-	wolf->player.posx = 5;
-	wolf->player.posy = 10;
-	wolf->dist_player = (SCREEN_X / 2) / tan((wolf->player.fov / 2) * RAD);
+	wolf->player.posx = PRES;
+	wolf->player.posy = PRES;
+	wolf->proj_dist_player = (SCREEN_X / 2) / tan((wolf->player.fov / 2) * RAD);
 	wolf->mlx = mlx_init();
 	wolf->win = mlx_new_window(wolf->mlx, SCREEN_X, SCREEN_Y, "WOLF3D");
 	wolf->img = mlx_new_image(wolf->mlx, SCREEN_X, SCREEN_Y);
