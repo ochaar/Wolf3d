@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:14:25 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/11 14:13:35 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/02/25 14:29:51 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,24 @@ t_inter		set(t_inter *i)
 	i->x = 10000;
 	i->y = 10000;
 	return (*i);
+}
+
+void		ft_orientation(double alpha, t_obstacle *ob, t_inter a)
+{
+	if (ob->dist == a.dist)
+	{
+		if (sin(alpha * RAD) > 0)
+			ob->ori = 0;
+		else
+			ob->ori = 1;
+	}
+	else
+	{
+		if (cos(alpha * RAD) > 0)
+			ob->ori = 2;
+		else
+			ob->ori = 3;
+	}
 }
 
 int			ft_wall_detect(t_obstacle *ob, t_data wolf, double alpha)
@@ -41,6 +59,7 @@ int			ft_wall_detect(t_obstacle *ob, t_data wolf, double alpha)
 		ob->dist = a.dist;
 	else if (b.dist >= 0)
 		ob->dist = b.dist;
+	ft_orientation(alpha, ob, a);
 	ob->h = PRES / ob->dist * wolf.proj_dist_player;
 	ob->col = a.dist > b.dist ? (int)b.y % (int)PRES : (int)a.x % (int)PRES;
 	return (1);

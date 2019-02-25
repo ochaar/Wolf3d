@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 13:58:31 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/11 13:52:22 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/02/25 15:17:21 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libft/libft.h"
 # include <stdio.h>
 
-# define PRES 256.00
+# define PRES 128.00
 # define RAD (M_PI / 180.00)
 # define KEY_PLUS 69
 # define KEY_UP 126
@@ -36,6 +36,7 @@ typedef struct		s_obstacle
 	int				dist;
 	int				token;
 	int				col;
+	int				ori;
 	int				x;
 	int				y;
 }					t_obstacle;
@@ -60,15 +61,20 @@ typedef struct		s_player
 	double		fov;
 }					t_player;
 
+typedef struct		s_tex
+{
+	void		*img;
+	char		*str;
+	int			sizel;
+}					t_tex;
+
 typedef struct		s_data
 {
 	void		*mlx;
 	void		*win;
 	void		*img;
 	char		*str;
-	void		*img_w;
-	char		*str_w;
-	int			size_w;
+	t_tex		tex[4];
 	t_player	player;
 	double		proj_dist_player;
 	double		xmouse;
@@ -109,6 +115,7 @@ t_inter		ft_vertical(double alpha, t_data wolf, int obstacle);
 t_inter		ft_horizontal(double alpha, t_data wolf, int obstacle);
 void		ft_put_pixel(int x, int y, int color, const t_data *wolf);
 void		draw(int x, const t_data *wolf, t_obstacle ob);
+void		ft_load_wall(t_data	*wolf);
 void		*thread(t_worker_arg *arg);
 
 #endif
