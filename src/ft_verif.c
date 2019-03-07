@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:42:32 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/25 14:12:14 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/02/27 16:19:37 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	ft_check_walls(t_map *data)
 	while (i < data->nb_num)
 	{
 		if (data->tab[0][i] != 1 || data->tab[i][0] != 1)
-			ft_map_error(2);
+			ft_map_error(2, 0);
 		else if (data->tab[29][i] != 1 || data->tab[i][29] != 1)
-			ft_map_error(2);
+			ft_map_error(2, 0);
 		i++;
 	}
 }
@@ -98,29 +98,14 @@ int		**ft_verif(char *file)
 	{
 		data.nb_num = ft_count(line);
 		if (data.nb_num != 30)
-			ft_map_error(1);
+			ft_map_error(1, data.nb_lines + 1);
 		data.nb_lines++;
 		free(line);
 	}
 	if (data.nb_lines != 30)
-		ft_map_error(0);
+		ft_map_error(0, 0);
 	close(fd);
 	read_data(file, &data);
 	ft_check_walls(&data);
 	return (data.tab);
-}
-
-void	ft_init(t_data *wolf)
-{
-	wolf->player.dirx = 0;
-	wolf->player.diry = 0;
-	/*wolf->player.start_x = 2;
-	wolf->player.start_y = 2;*/
-	wolf->player.fov = 60;
-	wolf->player.posx = PRES;
-	wolf->player.posy = PRES + 10;
-	wolf->proj_dist_player = (SCREEN_X / 2) / tan((wolf->player.fov / 2) * RAD);
-	wolf->mlx = mlx_init();
-	wolf->win = mlx_new_window(wolf->mlx, SCREEN_X, SCREEN_Y, "WOLF3D");
-	wolf->img = mlx_new_image(wolf->mlx, SCREEN_X, SCREEN_Y);
 }

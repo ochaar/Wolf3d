@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 13:59:33 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/25 14:39:06 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/07 15:16:56 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_put_pixel(int x, int y, int color, const t_data *wolf)
 	wolf->str[++i] = (color >> 16) & 0xff;
 }
 
-int		get_color(int y, t_data wolf, t_obstacle ob)
+int		get_text(int y, t_data wolf, t_obstacle ob)
 {
 	int color;
 
@@ -41,19 +41,14 @@ void	draw(int x, const t_data *wolf, t_obstacle ob)
 	int				yim;
 	unsigned int	color;
 
-	y = SCREEN_Y / 2 - ob.h / 2;
+	y = SCREEN_Y / 2 - (ob.h / 2);
 	yim = 0;
-	while (yim < y)
-	{
-		ft_put_pixel(x, yim, 0xbFFF, wolf);
-		yim++;
-	}
-	yim = 0;
+	ft_print_sky(x, wolf);
 	while (y < SCREEN_Y / 2 + ob.h / 2 && y < SCREEN_Y - 1)
 	{
-		if (y < SCREEN_Y && y >= 0)
+		if (y >= 0 && y < SCREEN_Y)
 		{
-			color = get_color(yim, *wolf, ob);
+			color = get_text(yim, *wolf, ob);
 			ft_put_pixel(x, y, color, wolf);
 		}
 		y++;

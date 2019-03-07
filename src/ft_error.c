@@ -6,20 +6,26 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:54:00 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/09 15:58:30 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/02/27 16:53:36 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void	ft_map_error(int x)
+void	ft_map_error(int x, int line)
 {
 	if (x == 0)
-		ft_putstr("MAP ERROR: not a 30x30 map\n");
+		ft_putstr("Map error: this is not a 30x30 map\n");
 	if (x == 1)
-		ft_putstr("Wrong line\n");
+	{
+		ft_putstr("Error line ");
+		ft_putnbr(line);
+		ft_putstr("\n");
+	}
 	if (x == 2)
-		ft_putstr("Border are not full of walls\n");
+		ft_putstr("Borders are not full of walls\n");
+	if (x == 3)
+		ft_putstr("Spawn error\n");
 	exit(0);
 }
 

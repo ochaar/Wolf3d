@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 13:58:31 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/25 15:17:21 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/07 16:56:07 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include <math.h>
 # include <pthread.h>
 # include "mlx.h"
-# include "libft/libft.h"
-# include <stdio.h>
+# include "../libft/include/libft.h"
 
 # define PRES 128.00
 # define RAD (M_PI / 180.00)
@@ -27,6 +26,7 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define KEY_ESC 53
+# define SPACE 49
 # define SCREEN_X 800
 # define SCREEN_Y 800
 
@@ -74,13 +74,15 @@ typedef struct		s_data
 	void		*win;
 	void		*img;
 	char		*str;
-	t_tex		tex[4];
+	t_tex		tex[6];
 	t_player	player;
 	double		proj_dist_player;
-	double		xmouse;
-	double		ymouse;
+	int			saut;
+	int			menu;
+	int			enter;
 	int			x;
 	int			y;
+	int			speed;
 	int			sizel;
 	int			**tab;
 	double		screeny;
@@ -102,20 +104,24 @@ typedef struct		s_worker_arg
 	int				start;
 }					t_worker_arg;
 
-
-void		ft_init(t_data *wolf);
-int			**ft_verif(char *file);
-void		ft_map_error(int x);
-void		ft_read_error(int x);
-void		ft_free_int(int **tab);
-void		ft_free_char(char **dst);
-int			ft_raycast(t_data wolf);
-int			ft_wall_detect(t_obstacle *ob, t_data wolf, double alpha);
-t_inter		ft_vertical(double alpha, t_data wolf, int obstacle);
-t_inter		ft_horizontal(double alpha, t_data wolf, int obstacle);
-void		ft_put_pixel(int x, int y, int color, const t_data *wolf);
-void		draw(int x, const t_data *wolf, t_obstacle ob);
-void		ft_load_wall(t_data	*wolf);
-void		*thread(t_worker_arg *arg);
+void				ft_init(t_data *wolf);
+int					**ft_verif(char *file);
+void				ft_map_error(int x, int line);
+void				ft_read_error(int x);
+void				ft_free_int(int **tab);
+void				ft_free_char(char **dst);
+int					ft_raycast(t_data wolf);
+int					ft_wall_detect(t_obstacle *ob, t_data wolf, double alpha);
+t_inter				ft_vertical(double alpha, t_data wolf, int obstacle);
+t_inter				ft_horizontal(double alpha, t_data wolf, int obstacle);
+void				ft_put_pixel(int x, int y, int color, const t_data *wolf);
+void				draw(int x, const t_data *wolf, t_obstacle ob);
+void				ft_load_wall(t_data	*wolf);
+void				ft_print_sky(int x, const t_data *wolf);
+void				ft_move(int key, t_data *wolf);
+int					menu(t_data *wolf);
+void				hook_key_menu(int key, t_data *wolf);
+void				*thread(t_worker_arg *arg);
+void				ft_mini_map(t_data wolf);
 
 #endif
