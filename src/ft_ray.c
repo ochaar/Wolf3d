@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 15:57:18 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/07 14:23:14 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/12 16:54:49 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	is_obst(double xa, double ya, t_inter *a, t_data wolf)
 {
-	while (((int)(a->x / PRES) < 30 && (int)(a->x / PRES) > 0) &&
-		(int)(a->y / PRES) < 30 && (int)(a->y / PRES) > 0)
+	while (((int)(a->x / PRES) < 30 && (int)(a->x / PRES) > 0)
+		&& (int)(a->y / PRES) < 30 && (int)(a->y / PRES) > 0)
 	{
 		if (wolf.tab[(int)(a->y / PRES)][(int)(a->x / PRES)] == a->obstacle)
 		{
@@ -102,5 +102,6 @@ int			ft_raycast(t_data wolf)
 	while (i--)
 		pthread_join(ray_thread[i], NULL);
 	mlx_put_image_to_window(wolf.mlx, wolf.win, wolf.img, 0, 0);
+	mlx_put_image_to_window(wolf.mlx, wolf.win, wolf.tex[6].img, 157, 320);
 	return (0);
 }

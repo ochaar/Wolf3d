@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 10:19:44 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/07 15:47:33 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/15 17:06:13 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int			main(int argc, char **argv)
 		wolf.tab = ft_verif(argv[1]);
 		ft_init(&wolf);
 		ft_load_wall(&wolf);
-		mlx_put_image_to_window(wolf.mlx, wolf.win, wolf.tex[5].img, 0, 0);
 		menu(&wolf);
 		mlx_hook(wolf.win, 2, 0, deal_key, &wolf);
 		mlx_hook(wolf.win, 17, 0, ft_close, &wolf);

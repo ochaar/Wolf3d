@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:54:00 by ochaar            #+#    #+#             */
-/*   Updated: 2019/02/27 16:53:36 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/13 11:37:44 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,9 @@ void	ft_read_error(int x)
 		ft_putstr("Open error\n");
 	if (x == 3)
 		ft_putstr("Thread error\n");
+	if (x == 4)
+		ft_putstr("Textures error\n");
+	if (x == 5)
+		ft_putstr("Read error\n");
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:08:15 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/07 14:29:20 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/12 16:53:40 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	*thread(t_worker_arg *arg)
 	x = arg->start * 50;
 	while (x < (arg->start + 1) * 50)
 	{
-		alpha = (wolf->player.dirx + (wolf->player.fov / 2)) -
-			((wolf->player.fov / SCREEN_X) * x);
+		alpha = (wolf->player.dirx + (wolf->player.fov / 2))
+			- ((wolf->player.fov / SCREEN_X) * x);
 		ft_wall_detect(&ob, *wolf, alpha);
 		draw(x, wolf, ob);
 		while (i++ < 7)

@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:14:25 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/05 16:35:07 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/15 18:32:16 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int			ft_wall_detect(t_obstacle *ob, t_data wolf, double alpha)
 
 	a = ft_horizontal(alpha, wolf, 1);
 	b = ft_vertical(alpha, wolf, 1);
-	a.dist = sqrt(pow((wolf.player.posx - a.x), 2) +
-			pow((wolf.player.posy - a.y), 2));
-	b.dist = sqrt(pow((wolf.player.posx - b.x), 2) +
-			pow((wolf.player.posy - b.y), 2));
+	a.dist = sqrt(pow((wolf.player.posx - a.x), 2)
+		+ pow((wolf.player.posy - a.y), 2));
+	b.dist = sqrt(pow((wolf.player.posx - b.x), 2)
+		+ pow((wolf.player.posy - b.y), 2));
 	if (a.dist >= b.dist)
 		ob->dist = b.dist;
 	else

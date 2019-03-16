@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 15:52:50 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/07 14:43:16 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/15 17:07:52 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	hook_key_menu(int key, t_data *wolf)
 	{
 		if (wolf->enter == 0)
 		{
-			wolf->player.dirx = 1;
+			wolf->player.dirx = 0;
 			wolf->player.diry = 0;
 			wolf->player.posx = PRES * wolf->player.start_x;
 			wolf->player.posy = PRES * wolf->player.start_y;
@@ -65,6 +65,7 @@ void	hook_key_menu(int key, t_data *wolf)
 
 int		menu(t_data *wolf)
 {
+	mlx_put_image_to_window(wolf->mlx, wolf->win, wolf->tex[5].img, 0, 0);
 	mlx_string_put(wolf->mlx, wolf->win, 350, 400, 0xFF0000, "NEW GAME");
 	mlx_string_put(wolf->mlx, wolf->win, 350, 500, 0xEEEEEE, "RESUME");
 	mlx_string_put(wolf->mlx, wolf->win, 350, 600, 0xEEEEEE, "QUIT");

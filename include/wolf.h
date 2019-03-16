@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 13:58:31 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/07 16:56:07 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/15 17:07:27 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <pthread.h>
 # include "mlx.h"
 # include "../libft/include/libft.h"
+# include <stdio.h>
 
 # define PRES 128.00
 # define RAD (M_PI / 180.00)
@@ -33,7 +34,7 @@
 typedef struct		s_obstacle
 {
 	int				h;
-	int				dist;
+	double			dist;
 	int				token;
 	int				col;
 	int				ori;
@@ -45,7 +46,7 @@ typedef struct		s_intersection
 {
 	double			x;
 	double			y;
-	int				dist;
+	double			dist;
 	int				token;
 	int				obstacle;
 }					t_inter;
@@ -74,7 +75,7 @@ typedef struct		s_data
 	void		*win;
 	void		*img;
 	char		*str;
-	t_tex		tex[6];
+	t_tex		tex[7];
 	t_player	player;
 	double		proj_dist_player;
 	int			saut;
