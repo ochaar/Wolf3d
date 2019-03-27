@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 12:54:00 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/13 11:37:44 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/20 14:38:03 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ void	ft_read_error(int x)
 		ft_putstr("Textures error\n");
 	if (x == 5)
 		ft_putstr("Read error\n");
+	if (x == 6)
+		ft_putstr("Mlx error\n");
 	exit(0);
 }

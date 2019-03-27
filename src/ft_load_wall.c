@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:50:46 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/16 15:20:43 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/18 17:04:52 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	ft_load_other(t_data *wolf)
 		&a, &a);
 	wolf->tex[6].img = mlx_xpm_file_to_image(wolf->mlx, "./xpm/gun.XPM",
 		&a, &a);
-	if (!(wolf->tex[4].img && wolf->tex[5].img && wolf->tex[6].img))
+	wolf->tex[7].img = mlx_xpm_file_to_image(wolf->mlx, "./xpm/metal.XPM",
+		&a, &a);
+	if (!(wolf->tex[4].img && wolf->tex[5].img && wolf->tex[6].img
+		&& wolf->tex[7].img))
 		ft_read_error(4);
 	wolf->tex[4].str = mlx_get_data_addr(wolf->tex[4].img, &i,
 		&wolf->tex[4].sizel, &i);
@@ -31,6 +34,8 @@ void	ft_load_other(t_data *wolf)
 		&wolf->tex[5].sizel, &i);
 	wolf->tex[6].str = mlx_get_data_addr(wolf->tex[6].img, &i,
 		&wolf->tex[6].sizel, &i);
+	wolf->tex[7].str = mlx_get_data_addr(wolf->tex[7].img, &i,
+		&wolf->tex[7].sizel, &i);
 }
 
 void	ft_load_wall(t_data *wolf)

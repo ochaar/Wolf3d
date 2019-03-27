@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 10:19:44 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/15 17:06:13 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/27 10:50:17 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static int	deal_key(int key, void *param)
 	{
 		ft_move(key, wolf);
 		mlx_destroy_image(wolf->mlx, wolf->img);
-		wolf->img = mlx_new_image(wolf->mlx, SCREEN_X, SCREEN_Y);
+		if (!(wolf->img = mlx_new_image(wolf->mlx, SCREEN_X, SCREEN_Y)))
+			ft_read_error(6);
 		wolf->str = mlx_get_data_addr(wolf->img, &key, &wolf->sizel, &key);
 		ft_raycast(*wolf);
 	}

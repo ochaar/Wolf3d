@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 13:58:31 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/15 17:07:27 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/21 12:51:06 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <pthread.h>
 # include "mlx.h"
 # include "../libft/include/libft.h"
-# include <stdio.h>
 
 # define PRES 128.00
 # define RAD (M_PI / 180.00)
@@ -75,10 +74,9 @@ typedef struct		s_data
 	void		*win;
 	void		*img;
 	char		*str;
-	t_tex		tex[7];
+	t_tex		tex[8];
 	t_player	player;
 	double		proj_dist_player;
-	int			saut;
 	int			menu;
 	int			enter;
 	int			x;
@@ -113,6 +111,7 @@ void				ft_free_int(int **tab);
 void				ft_free_char(char **dst);
 int					ft_raycast(t_data wolf);
 int					ft_wall_detect(t_obstacle *ob, t_data wolf, double alpha);
+int					ft_tp_detect(t_obstacle *ob, t_data wolf, double alpha);
 t_inter				ft_vertical(double alpha, t_data wolf, int obstacle);
 t_inter				ft_horizontal(double alpha, t_data wolf, int obstacle);
 void				ft_put_pixel(int x, int y, int color, const t_data *wolf);

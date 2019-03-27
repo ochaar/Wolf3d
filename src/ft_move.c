@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:26:10 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/16 15:20:21 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/26 15:48:03 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,10 @@ void	ft_move(int key, t_data *wolf)
 		wolf->player.dirx -= 5;
 	if (key == KEY_LEFT)
 		wolf->player.dirx += 5;
+	if (wolf->player.dirx > 360)
+		wolf->player.dirx = 5;
+	else if (wolf->player.dirx < 0)
+		wolf->player.dirx = 355;
 	if (key == 257)
 		wolf->speed += wolf->speed == 1 ? 1 : -1;
 	if (key == KEY_DOWN)

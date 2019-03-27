@@ -6,7 +6,7 @@
 #    By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/07 11:13:09 by prastoin          #+#    #+#              #
-#    Updated: 2019/03/15 17:06:52 by ochaar           ###   ########.fr        #
+#    Updated: 2019/03/19 16:02:57 by ochaar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIBX = -lmlx -framework OpenGL -framework AppKit
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-		@gcc $(FLAG) -o $(NAME) $(OBJ) $(LIB) $(INC) $(LIBX)
+		@gcc $(FLAG) -o $(NAME) $(OBJ) $(LIB) $(INC) $(LIBX) 
 		@echo "\033[0;31mExecutable wolf3d \033[0m \033[0;32m [OK] \033[0m"
 
 $(LIB):

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbecerri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 09:53:19 by fbecerri          #+#    #+#             */
-/*   Updated: 2018/11/23 18:12:24 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/19 15:09:54 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char	*ft_reader(char **str, char *buff, int fd)
 	int		ret;
 
 	ret = 1;
-	while (!(ft_strchr(*str, '\n')) && ret != 0)
+	while (!(ft_strchr(*str, '\n')) && (ret = read(fd, buff, BUFF_SIZE))
+		&& *buff)
 	{
-		ret = read(fd, buff, BUFF_SIZE);
 		if (ret == -1)
 			return (NULL);
 		if (ret)

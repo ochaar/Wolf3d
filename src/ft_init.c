@@ -6,7 +6,7 @@
 /*   By: ochaar <ochaar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:17:59 by ochaar            #+#    #+#             */
-/*   Updated: 2019/03/08 16:51:43 by ochaar           ###   ########.fr       */
+/*   Updated: 2019/03/27 10:48:58 by ochaar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,11 @@ void	ft_init(t_data *wolf)
 	wolf->enter = 0;
 	wolf->speed = 1;
 	wolf->proj_dist_player = (SCREEN_X / 2) / tan((wolf->player.fov / 2) * RAD);
-	wolf->mlx = mlx_init();
-	wolf->win = mlx_new_window(wolf->mlx, SCREEN_X, SCREEN_Y, "WOLF3D");
-	wolf->img = mlx_new_image(wolf->mlx, SCREEN_X, SCREEN_Y);
+	if (!(wolf->mlx = mlx_init()))
+		ft_read_error(6);
+	if (!(wolf->win = mlx_new_window(wolf->mlx, SCREEN_X, SCREEN_Y, "WOLF3D")))
+		ft_read_error(6);
+	if (!(wolf->img = mlx_new_image(wolf->mlx, SCREEN_X, SCREEN_Y)))
+		ft_read_error(6);
 	wolf->str = mlx_get_data_addr(wolf->img, &i, &wolf->sizel, &i);
 }
